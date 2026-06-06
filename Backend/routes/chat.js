@@ -111,6 +111,43 @@ import Thread from "../models/Thread.js";
 
 const router = express.Router();
 
+
+router.get('/thread', async (req, res) => {
+  try {
+    const threads = await Thread.find({}).sort({ updatedAt: -1 })
+    res.status(200).json(threads)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+})
+
+router.get('/thread/:_id',async(req,res)=>{
+  try {
+    const {_id} = req.params
+    const th = await Thread.findOne({_id})
+    if(!th){
+      return res.status(404).json({error:"Thread not found"})
+    }
+    res.status(200).json(th)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+
+router.delete('/thread/delete/:_id',async(req,res)=>{
+  try {
+    const {_id} = req.params
+    const deleted = await Thread.findByIdAndDelete({_id})
+    if(!deleted){
+      res.status(500).json({error:"Failed to delete"})
+    }
+    res.status(200).json(deleted)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+
 router.post("/test", async (req, res) => {
   try {
     const thread = new Thread({
