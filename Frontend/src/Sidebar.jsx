@@ -73,7 +73,7 @@ function Sidebar() {
 
 
             <ul className="history">
-                {
+                {/* {
                     allThreads?.map((thread, idx) => (
                         <li key={idx} 
                             onClick={(e) => changeThread(thread.threadId)}
@@ -88,11 +88,14 @@ function Sidebar() {
                             ></i>
                         </li>
                     ))
-                }
+                } */}
+                <li>thread1</li>
+                <li>thread2</li>
+                <li>thread3</li>
             </ul>
  
             <div className="sign">
-                <p>By ApnaCollege &hearts;</p>
+                <p>By Shubham &hearts;</p>
             </div>
         </section>
     )

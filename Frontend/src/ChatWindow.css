@@ -13,17 +13,18 @@
 
 .navbar {
     width: 100%;
+    height: 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .navbar span {
-    margin: 1rem 2rem;
+    margin:1rem;
 }
 
 .userIconDiv {
-    margin: 1rem 2rem;
+    margin: 1rem;
 }
 
 .userIcon {
@@ -59,9 +60,9 @@ input {
     width: 100%;
     border: none;
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    font-size: 0.8rem;
-    border-radius: 14px;
+    padding: 18px;
+    font-size: 0.9rem;
+    border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0 54px 55px,
                 rgba(0, 0, 0, 0.05) 0 -12px 30px,
                 rgba(0, 0, 0, 0.05) 0 4px 6px,
@@ -83,10 +84,15 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+}
+#submit i{
+    color:#000;
 }
 
-#submit i:hover {
-    color: #fff;
+#submit:hover {
+    background-color:rgba(255, 255, 255, 0.7);
 }
 
 .info {

@@ -47,7 +47,7 @@ router.post("/chat", async (req, res) => {
     if(!threadId || !message){
       return res.status(400).json({error:'Missing required Fields'})
     }
-    const thread = await Thread.findOne({threadId})
+    let thread = await Thread.findOne({threadId})
     if(!thread){
       thread = new Thread({
         threadId,
