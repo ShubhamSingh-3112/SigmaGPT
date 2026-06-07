@@ -25,7 +25,7 @@ function Chat() {
 
             idx++;
             if(idx >= content.length) clearInterval(interval);
-        }, 40);
+        }, 50);
 
         return () => clearInterval(interval);
 
@@ -36,12 +36,12 @@ function Chat() {
             {newChat && <h1>Start a New Chat!</h1>}
             <div className="chats">
                 {
-                    prevChats?.slice(0, -1).map((chat, idx) => 
+                    prevChats?.slice(0,-1).map((chat, idx) => 
                         <div className={chat.role === "user"? "userDiv" : "gptDiv"} key={idx}>
                             {
                                 chat.role === "user"? 
                                 <p className="userMessage">{chat.content}</p> : 
-                                <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{chat.content}</ReactMarkdown>
+                                <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{chat.content}</ReactMarkdown> // for proper formatting of reply
                             }
                         </div>
                     )

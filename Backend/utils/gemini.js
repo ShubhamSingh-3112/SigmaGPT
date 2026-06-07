@@ -33,9 +33,13 @@ const getGeminiAPIResponse = async (message) => {
             content: response.data.candidates[0].content.parts[0].text
         };
 
-    } catch (err) {
-        console.error(err.response?.data || err.message);
-    }
+    }catch (err) {
+        console.log(err)
+        return {
+            role: "assistant",
+            content: "Rate limit exceeded. Please try again in a minute."
+        };
+}
 };
 
 export default getGeminiAPIResponse

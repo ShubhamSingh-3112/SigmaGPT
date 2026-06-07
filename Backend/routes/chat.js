@@ -14,10 +14,10 @@ router.get('/thread', async (req, res) => {
   }
 })
 
-router.get('/thread/:_id',async(req,res)=>{
+router.get('/thread/:threadId',async(req,res)=>{
   try {
-    const {_id} = req.params
-    const th = await Thread.findOne({_id})
+    const {threadId} = req.params
+    const th = await Thread.findOne({threadId})
     if(!th){
       return res.status(404).json({error:"Thread not found"})
     }
@@ -27,10 +27,10 @@ router.get('/thread/:_id',async(req,res)=>{
   }
 })
 
-router.delete('/thread/delete/:_id',async(req,res)=>{
+router.delete('/thread/delete/:threadId',async(req,res)=>{
   try {
-    const {_id} = req.params
-    const deleted = await Thread.findByIdAndDelete({_id})
+    const {threadId} = req.params
+    const deleted = await Thread.findOneAndDelete({threadId})
     if(!deleted){
       res.status(500).json({error:"Failed to delete"})
     }
@@ -41,6 +41,7 @@ router.delete('/thread/delete/:_id',async(req,res)=>{
 })
 
 router.post("/chat", async (req, res) => {
+  console.log("REQUEST RECEIVED");
   try {
     const {threadId,message} = req.body
     

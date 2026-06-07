@@ -12,15 +12,15 @@ function ChatWindow() {
 
     const getReply = async () => {
         setLoading(true);
-        // setNewChat(false);
+        setNewChat(false);
         console.log("message ", prompt, " threadId ", currThreadId);
         const body = {
                 message: prompt,
                 threadId: currThreadId
             }
-            setPrompt('')
         try {
             const response = await axios.post("http://localhost:8080/api/chat", body);
+            console.log(response.data)
             console.log(response.data.reply.content);
             setReply(response.data.reply.content);
         } catch(err) {
@@ -59,19 +59,19 @@ function ChatWindow() {
                     <span className="userIcon"><i className="fa-solid fa-user"></i></span>
                 </div>
             </div>
-            {/* {
+            {
                 isOpen && 
                 <div className="dropDown">
                     <div className="dropDownItem"><i className="fa-solid fa-gear"></i> Settings</div>
                     <div className="dropDownItem"><i className="fa-solid fa-cloud-arrow-up"></i> Upgrade plan</div>
                     <div className="dropDownItem"><i className="fa-solid fa-arrow-right-from-bracket"></i> Log out</div>
                 </div>
-            } */}
-            {/* <Chat></Chat> */}
-
+            }
+            <Chat></Chat>
+            
             <SyncLoader color="#fff" loading={loading}>
             </SyncLoader>
-            
+            <br />
             <div className="chatInput">
                 <div className="inputBox">
                     <input placeholder="Ask anything"
